@@ -3,8 +3,6 @@ package uk.co.lukestevens.config;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import uk.co.lukestevens.encryption.EncryptionService;
-
 /**
  * @author luke.stevens
  */
@@ -62,12 +60,11 @@ public interface Config {
 	/**
 	 * Gets the unencrypted value of an encrypted, mandatory property
 	 * @param key The property key for which to return the configured value
-	 * @param service The encryption service to use to decrypt the key
 	 * @return The unencrypted value associated with the given key
 	 * @throws ConfigException if the given key does not exist, or if it cannot
 	 * be decrypted
 	 */
-	public String getEncrypted(String key, EncryptionService service);
+	public String getEncrypted(String key);
 	
 	/**
 	 * Gets the value of a mandatory property parsed as an integer
