@@ -1,5 +1,6 @@
 package uk.co.lukestevens.config;
 
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -126,5 +127,26 @@ public interface Config {
 	 * @throws ConfigException if the given key exists but cannot be parsed to a boolean
 	 */
 	public boolean getAsBooleanOrDefault(String key, boolean def);
+	
+	/**
+	 * Gets the value of a mandatory property parsed as a list of strings.
+	 * The list of strings is parsed by comma separated values
+	 * @param key The property key for which to return the configured value
+	 * @return The list value associated with the given key
+	 * @throws ConfigException if the given key does not exist, or if it cannot
+	 * be parsed to a list
+	 */
+	public List<String> getAsList(String key);
+	
+	/**
+	 * Gets the value of a optional property parsed as a list of strings.
+	 * The list of strings is parsed by comma separated values
+	 * @param key The property key for which to return the configured value
+	 * @param def The default value to return if the value has not been configured
+	 * @return The list value associated with the given key
+	 * @throws ConfigException if the given key exists but cannot
+	 * be parsed to a list
+	 */
+	public List<String> getAsListOrDefault(String key, List<String> def);
 	
 }
