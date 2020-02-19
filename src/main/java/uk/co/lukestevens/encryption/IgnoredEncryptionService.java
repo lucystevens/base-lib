@@ -1,7 +1,6 @@
-package uk.co.lukestevens.mocks;
+package uk.co.lukestevens.encryption;
 
 import java.io.IOException;
-import uk.co.lukestevens.encryption.EncryptionService;
 
 
 public class IgnoredEncryptionService implements EncryptionService {
