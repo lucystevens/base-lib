@@ -10,6 +10,16 @@ import java.util.Set;
 public interface Config {
 	
 	/**
+	 * @return The unique name of this application
+	 */
+	public String getApplicationName();
+	
+	/**
+	 * @return The running version of this application
+	 */
+	public String getApplicationVersion();
+	
+	/**
 	 * Gets a set of config entries. If this config is loaded
 	 * from the database, this will return only the currently
 	 * loaded entries, and will not update from the database.
