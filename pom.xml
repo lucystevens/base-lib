@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>uk.co.lukestevens</groupId>
 	<artifactId>base-lib</artifactId>
-	<version>1.0.0-beta</version>
+	<version>1.0.0</version>
 	<name>base-lib</name>
 
 	<properties>
@@ -43,6 +43,14 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub lukecmstevens Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/lukecmstevens/packages</url>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 
