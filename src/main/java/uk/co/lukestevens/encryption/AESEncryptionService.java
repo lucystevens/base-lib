@@ -8,6 +8,8 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 
 /**
@@ -15,13 +17,15 @@ import javax.crypto.spec.SecretKeySpec;
  * 
  * @author luke.stevens
  */
+@Singleton
 public class AESEncryptionService implements EncryptionService {
 	
 	private static final int IV_LENGTH = 12;
 	
 	private final String key;
 	
-	public AESEncryptionService(String key) {
+	@Inject
+	public AESEncryptionService(@EncryptionKey String key) {
 		this.key = key;
 	}
 
