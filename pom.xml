@@ -33,10 +33,17 @@
 	</build>
 
 	<distributionManagement>
+	     <snapshotRepository>
+            <id>github-snapshot</id>
+            <name>GitHub lukecmstevens Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/lukecmstevens/packages/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
 		<repository>
-			<id>github</id>
+			<id>github-release</id>
 			<name>GitHub lukecmstevens Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/lukecmstevens/packages</url>
+			<uniqueVersion>false</uniqueVersion>
 		</repository>
 	</distributionManagement>
 
