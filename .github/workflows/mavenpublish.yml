@@ -8,6 +8,9 @@ on:
     branches:
     - master
     - develop
+    
+env:
+  GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
 
 jobs:
   build:
@@ -21,12 +24,9 @@ jobs:
       with:
         java-version: 1.8
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package -s .m2/settings.xml --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+      run: mvn deploy -s .m2/settings.xml
