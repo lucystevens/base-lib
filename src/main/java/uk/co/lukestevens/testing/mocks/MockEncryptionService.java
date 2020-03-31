@@ -1,4 +1,4 @@
-package uk.co.lukestevens.mocks;
+package uk.co.lukestevens.testing.mocks;
 
 import java.io.IOException;
 
