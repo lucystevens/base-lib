@@ -7,10 +7,10 @@ on:
   push:
     branches:
     - master
-    - develop
-    
+
 env:
   GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+  M2_SETTINGS: https://raw.githubusercontent.com/lukecmstevens/packages/master/.m2/settings.xml
 
 jobs:
   build:
@@ -25,8 +25,11 @@ jobs:
         java-version: 1.8
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
 
+    - name: Download .m2 settings
+      run: curl $M2_SETTINGS -O
+
     - name: Build with Maven
-      run: mvn -B package -s .m2/settings.xml --file pom.xml
+      run: mvn -B package -s settings.xml --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s .m2/settings.xml
+      run: mvn deploy -s settings.xml
