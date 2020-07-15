@@ -4,7 +4,6 @@ package uk.co.lukestevens.logging;
  * An interface to define a simple logger
  * 
  * @author luke.stevens
- * @see LogManager
  */
 public interface Logger {
 	

@@ -69,15 +69,6 @@ public interface Config {
 	public <T> T getParsedValueOrDefault(String key, KeyParser<T> parser, T def);
 	
 	/**
-	 * Gets the unencrypted value of an encrypted, mandatory property
-	 * @param key The property key for which to return the configured value
-	 * @return The unencrypted value associated with the given key
-	 * @throws ConfigException if the given key does not exist, or if it cannot
-	 * be decrypted
-	 */
-	public String getEncrypted(String key);
-	
-	/**
 	 * Gets the value of a mandatory property parsed as an integer
 	 * @param key The property key for which to return the configured value
 	 * @return The integer value associated with the given key
