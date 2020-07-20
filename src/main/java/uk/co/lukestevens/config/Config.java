@@ -1,5 +1,6 @@
 package uk.co.lukestevens.config;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -8,16 +9,6 @@ import java.util.Set;
  * @author luke.stevens
  */
 public interface Config {
-	
-	/**
-	 * @return The unique name of this application
-	 */
-	public String getApplicationName();
-	
-	/**
-	 * @return The running version of this application
-	 */
-	public String getApplicationVersion();
 	
 	/**
 	 * Gets a set of config entries. If this config is loaded
@@ -149,5 +140,11 @@ public interface Config {
 	 * be parsed to a list
 	 */
 	public List<String> getAsListOrDefault(String key, List<String> def);
+	
+	/**
+	 * Loads current configuration from the source
+	 * @throws IOException
+	 */
+	public void load() throws IOException;
 	
 }
