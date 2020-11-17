@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 public class StreamUtils {
 	
 	@SuppressWarnings("unchecked")
-	public <T> Stream<T> asStream(T...objects){
+	public static <T> Stream<T> asStream(T...objects){
 		return Arrays.asList(objects).stream();
 	}
 
