@@ -9,5 +9,11 @@ import java.lang.annotation.Target;
 import java.lang.annotation.Retention;
 import javax.inject.Qualifier;
 
+/**
+ * Injection annotation for the configuration
+ * used for setting up the application config
+ * 
+ * @author Luke Stevens
+ */
 @Qualifier @Target({ FIELD, PARAMETER, METHOD }) @Retention(RUNTIME)
 public @interface SetupConfig {}
