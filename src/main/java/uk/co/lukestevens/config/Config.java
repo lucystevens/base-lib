@@ -6,6 +6,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
+ * An interface for a configuration class with methods
+ * to get properties parsed as various primitive
+ * values
+ * 
  * @author luke.stevens
  */
 public interface Config {
