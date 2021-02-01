@@ -8,8 +8,8 @@ package uk.co.lukestevens.logging;
  */
 public enum LoggerLevel {
 	
-	INFO(1),
-	DEBUG(2),
+	DEBUG(1),
+	INFO(2),
 	WARNING(3),
 	ERROR(4);
 	
