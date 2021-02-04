@@ -29,5 +29,6 @@ hs_err_pid*
 .project
 .settings/
 
-# maven files
+# action generated files
 .m2/
+pom.xml.versionsBackup

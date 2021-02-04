@@ -1,15 +1,10 @@
 # This workflow does all the tagging, building, publishing etc. around a new release
-
 name: Release
 
 on:
   push:
     branches:
     - main
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  M2_SETTINGS: https://raw.githubusercontent.com/lukecmstevens/packages/master/.m2/settings.xml
 
 jobs:
   build:
@@ -29,30 +24,26 @@ jobs:
     # Finalise the version by removing the -beta or -SNAPSHOT suffix if it exists
 
     - name: Finalise version
-      run: scripts/finalise-version.sh
-
-    - name: Download .m2 settings
-      run: curl $M2_SETTINGS -O
+      uses: lukecmstevens/actions/finalise-version@main
 
     # Build and deploy maven package (including running tests)
 
     - name: Build with Maven
-      run: mvn -B package -s settings.xml --file pom.xml
+      uses: lukecmstevens/actions/maven-task@main
+      with:
+        task: package
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s settings.xml
+      uses: lukecmstevens/actions/maven-task@main
+      with:
+        task: deploy
+        token: ${{ secrets.GH_ACCESS_TOKEN }}
 
     # Get maven properties and store in environment
 
-    - name: Get version
-      run: |
-          VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
-          echo "MVN_VERSION=$VERSION" >> $GITHUB_ENV
-
-    - name: Get artifactId
-      run: |
-          ARTIFACT=$( mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout )
-          echo "MVN_ARTIFACT=$ARTIFACT" >> $GITHUB_ENV
+    - name: Get maven properties
+      uses: lukecmstevens/actions/get-mvn-properties@main
 
     # We finalised the version earlier, now committing, tagging, and pushing to main
 
@@ -69,7 +60,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ env.MVN_VERSION }}
         release_name: Release ${{ env.MVN_VERSION }}
@@ -94,7 +85,9 @@ jobs:
         ref: develop
 
     - name: Bump version
-      run: scripts/bump-version.sh
+      uses: lukecmstevens/actions/bump-version@main
+      with:
+       version-suffix: SNAPSHOT
 
     - name: Commit and push bumped version
       uses: stefanzweifel/git-auto-commit-action@v4
