@@ -90,8 +90,8 @@ Please make sure to update tests as appropriate.
 [MIT][mit-license]
 
 [gh-package-auth]: https://docs.github.com/en/free-pro-team@latest/packages/guides/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages
-[workflow-badge-develop]: https://github.com/lukecmstevens/base-lib/workflows/Publish%20Develop/badge.svg?branch=develop
-[workflow-badge-main]: https://github.com/lukecmstevens/base-lib/workflows/Release%20Main/badge.svg?branch=main
+[workflow-badge-develop]: https://img.shields.io/github/workflow/status/lukecmstevens/base-lib/publish/develop?label=develop
+[workflow-badge-main]: https://img.shields.io/github/workflow/status/lukecmstevens/base-lib/release/main?label=main
 [version-badge]: https://img.shields.io/github/v/release/lukecmstevens/base-lib
 [mit-license]: https://choosealicense.com/licenses/mit/
 
