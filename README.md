@@ -14,7 +14,7 @@ Install the latest version of base-lib using Maven:
 <dependency>
 	<groupId>uk.co.lukestevens</groupId>
 	<artifactId>base-lib</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 </dependency>
 ```
 
