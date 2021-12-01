@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/lukecmstevens/packages")
+        credentials {
+            username = System.getenv("GH_USER")
+            password = System.getenv("GH_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation 'javax.inject:javax.inject:1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
+}
+
+group = 'uk.co.lukestevens'
+sourceCompatibility = '11'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
