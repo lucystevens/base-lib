@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public abstract class IEntity {
 
-	public abstract Integer getId();
+	public abstract Long getId();
 	
 	@Override
 	public boolean equals(Object obj) {
