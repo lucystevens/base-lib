@@ -12,7 +12,7 @@ Install the latest version of base-lib:
 e.g. Gradle: `build.gradle`
 ```groovy
 dependencies {
-    implementation 'uk.co.lukestevens:base-lib:3.0.0-SNAPSHOT'
+    implementation 'uk.co.lukestevens:${PROJECT_NAME}:${PROJECT_VERSION}'
 }
 ```
 
@@ -20,8 +20,8 @@ e.g. Maven: `pom.xml`
 ```xml
 <dependency>
 	<groupId>uk.co.lukestevens</groupId>
-	<artifactId>base-lib</artifactId>
-	<version>3.0.0-SNAPSHOT</version>
+	<artifactId>${PROJECT_NAME}</artifactId>
+	<version>${PROJECT_VERSION}</version>
 </dependency>
 ```
 
