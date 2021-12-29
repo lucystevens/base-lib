@@ -1,5 +1,9 @@
 package uk.co.lukestevens.utils;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -14,32 +18,19 @@ import uk.co.lukestevens.testing.mocks.DateMocker;
  */
 public class Dates {
 	
-	private static Date currentDate;
+	private static LocalDateTime currentDate;
 
 	/**
-	 * Mockable wrapper around {@link Date#Date()}.<br/>
-     * Allocates a <code>Date</code> object and initializes it so that
-     * it represents the time at which it was allocated, measured to the
-     * nearest millisecond.
+	 * Mockable wrapper around {@link LocalDateTime#now()}.<br/>
 	 */
-	public static Date now() {
-		return currentDate == null? new Date() : currentDate;
+	public static LocalDateTime now() {
+		return currentDate == null?
+				LocalDateTime.now() :
+				currentDate;
 	}
-	
-	/**
-	 * Mockable wrapper around {@link Calendar#getInstance()}.<br/>
-     * Gets a calendar using the default time zone and locale. The
-     * <code>Calendar</code> returned is based on the current time
-     * in the default time zone with the default
-     * {@link Locale.Category#FORMAT FORMAT} locale.
-	 * @return a Calendar
-	 */
-	public static Calendar getCalendar() {
-		Calendar cal = Calendar.getInstance();
-		if(currentDate != null) {
-			cal.setTime(currentDate);
-		}
-		return cal;
+
+	public static Instant instant(){
+		return now().toInstant(ZoneOffset.UTC);
 	}
 	
 	/**
@@ -49,7 +40,7 @@ public class Dates {
 	 * @return the time in milliseconds.
 	 */
 	public static Long millis() {
-		return now().getTime();
+		return instant().toEpochMilli();
 	}
 
 }
